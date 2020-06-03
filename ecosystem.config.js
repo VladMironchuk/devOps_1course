@@ -15,7 +15,7 @@ module.exports = {
     out_file    : "logs/submeet-subscriptions.log",
     merge_logs: true, 
     env: {
-      PORT: 8081,
+      PORT: 9991,
       NODE_ENV: "development",
       swagger_mockMode: true, 
       //NODE_OPTIONS: "--inspect --inspect-port=9232"
@@ -25,7 +25,7 @@ module.exports = {
       swagger_mockMode: true, 
       autorestart: false,
       instances: 1,
-      PORT: 8081
+      PORT: 9991
     }
   }] 
 };

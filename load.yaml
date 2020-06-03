@@ -1,5 +1,5 @@
 phantom:
-  address: targethost:8081 # [Target's address]:[target's port]
+  address: targethost:9991 # [Target's address]:[target's port]
   uris:
     - /api/v1/subscription/categories
   load_profile:

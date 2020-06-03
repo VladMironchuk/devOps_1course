@@ -35,12 +35,12 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   swaggerExpress.register(app);
 
   //var port = process.env.PORT || 8081;
-  var port = 8081;
+  var port = 9991;
   app.listen(port);
 
 	console.log('check this to see docs :\n  http://127.0.0.1:' + port + '/');
   
   if (swaggerExpress.runner.swagger.paths['/subscription/categories']) {
-    console.log('try this:\ncurl http://127.0.0.1:' + port + '/subscription/categories');
+    console.log('try this:\ncurl http://127.0.0.1:' + port + '/premiere/list');
   }
 });
