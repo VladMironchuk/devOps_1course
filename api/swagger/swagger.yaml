@@ -1,0 +1,156 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: 3VinSerg Premiere Service
+# during dev, should point to your local machine
+host: localhost:9991
+# basePath prefixes all resource paths 
+basePath: /api/v1
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+  - application/xml
+paths:
+  /premiere/list:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: premiere
+    get:
+      description: list of premieres
+      # used as the method name of the controller
+      operationId: listPremiere
+      parameters:
+        - name: premier
+          in: query
+          description: The name of the premier in list
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PremierList"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+            
+            
+  /premiere/data:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: premiere
+    get:
+      description: return types of categories to which is subscribed
+      # used as the method name of the controller
+      operationId: PremiereData
+      parameters:
+        - name: data
+          in: query
+          description: The data of any premiere
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PremierData"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /premiere/reservations:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: premiere
+    get:
+      description: List of reservations
+      # used as the method name of the controller
+      operationId: PremiereReservations
+      parameters:
+        - name: reservation
+          in: query
+          description: The type of subscribed for the categoty
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/Reservations"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  PremierList:
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        
+  PremierData:
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      sport:
+        type: string
+      time:
+        type: string
+        
+  #SubscrProduct:
+   # required:
+  #   - productName
+   # properties:
+    #  productName:
+   #     type: string
+    #  category:
+    #    type: string
+    #  subcategory:
+    #    type: string
+    #  photo:
+    #    type: string
+    #  type:
+     #   description: daily | weekly | yearly
+     #   type: string
+        
+  Reservations:
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      time:
+        type: string
+      place:
+        type: string
+        
+  
+ 
+        
+        
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
