@@ -1,0 +1,219 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "SubMeet Subscription Service",
+    "version" : "0.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8081/api/v1"
+  }, {
+    "url" : "https://localhost:8081/api/v1"
+  } ],
+  "paths" : {
+    "/subscription/categories" : {
+      "get" : {
+        "description" : "return categories to which is subscribed",
+        "operationId" : "listCategories",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "query",
+          "description" : "The name of the categoty to which is subscribed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json - application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SubscrCategory"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json - application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "subscription"
+    },
+    "/subscription/types" : {
+      "get" : {
+        "description" : "return types of categories to which is subscribed",
+        "operationId" : "TypesCategories",
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "query",
+          "description" : "The type of subscribed for the categoty",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json - application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SubscrTypes"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json - application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "subscription"
+    },
+    "/subscription/product" : {
+      "get" : {
+        "description" : "return types of categories to which is subscribed",
+        "operationId" : "SubscProduct",
+        "parameters" : [ {
+          "name" : "product",
+          "in" : "query",
+          "description" : "The type of subscribed for the categoty",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json - application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Subsctiptions"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json - application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "subscription"
+    },
+    "/swagger" : {
+      "x-swagger-pipe" : "swagger_raw"
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "SubscrCategory" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "SubscrTypes" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "subcategory" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "daily | weekly | yearly"
+          }
+        }
+      },
+      "Subsctiptions" : {
+        "type" : "array",
+        "xml" : {
+          "wrapped" : true
+        },
+        "items" : {
+          "$ref" : "#/components/schemas/Subsctiption"
+        }
+      },
+      "Subsctiption" : {
+        "type" : "object",
+        "properties" : {
+          "subscription" : {
+            "type" : "string"
+          },
+          "nameProduct" : {
+            "type" : "string",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "category" : {
+            "type" : "string",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "subcategory" : {
+            "type" : "string",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "cost" : {
+            "type" : "number",
+            "xml" : {
+              "attribute" : true
+            }
+          }
+        },
+        "xml" : {
+          "name" : "subscription"
+        }
+      },
+      "ErrorResponse" : {
+        "required" : [ "message" ],
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}

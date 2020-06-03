@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<products title="Products">
+    <product id="111" category="Products for babies" subcategory="Diapers" name="Huggies" cost="$5"/>
+    <product id="112" category="Products for babies" subcategory="Diapers" name="Pampers" cost="$5.5"/>
+    <product id="211" category="Cosmetics" subcategory="Lipstick" name="Eyebrow lipstick" cost="$3"/>
+    <product id="221" category="Cosmetics" subcategory="Mascara" name="Lancome Hypnose" cost="$4"/>
+    <product id="121" category="Products for babies" subcategory="Toys" name="Beanbag" cost="$2"/>
+    <product id="131" category="Products for babies" subcategory="Baby food" name="Baby puree" cost="$2"/>
+</products>
