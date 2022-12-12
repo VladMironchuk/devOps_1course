@@ -10,7 +10,7 @@
   "dependencies": {
     "app-root-path": "^3.0.0",
     "chance": "^1.1.5",
-    "express": "^4.12.3",
+    "express": "^4.17.3",
     "express-healthcheck": "^0.1.0",
     "faker": "^4.1.0",
     "json-schema-faker": "^0.5.0-rcv.24",
