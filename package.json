@@ -17,14 +17,14 @@
     "modules": "^0.4.0",
     "pm2": "^4.4.0",
     "swagger-codegen": "^0.1.1",
-    "swagger-express-mw": "^0.1.0",
+    "swagger-express-mw": "^0.7.0",
     "swagger-stats": "^0.95.17",
     "winston": "^3.2.1",
     "xmlbuilder": "^15.1.1"
   },
   "devDependencies": {
     "should": "^7.1.0",
-    "supertest": "^1.0.0"
+    "supertest": "^6.3.3"
   },
   "scripts": {
     "start": "node app.js",
